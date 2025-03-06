@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch built-in server and Debug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003, // Puerto que usa Xdebug
+            "noDebug": false,
+            "runtimeArgs": [
+                "-S",
+                "localhost:8000", // Puerto del servidor PHP integrado
+                "-t",
+                "./WebSite" // Ruta relativa a la carpeta WebSite
+            ],
+            "cwd": "${workspaceRoot}", // Directorio raíz del workspace
+            "serverReadyAction": {
+                "action": "openExternally",
+                "pattern": "Development Server \\(http://localhost:([0-9]+)\\) started", // Expresión regular para detectar cuando el servidor está listo
+                "uriFormat": "http://localhost:%s" // Formato de la URL
+            },
+            "log": true // Habilita logs para depuración
+        },
+        {
+            "name": "Listen for Xdebug",
+            "type": "php",
+            "request": "launch",
+            "port": 9003, // Puerto que usa Xdebug
+            "log": true // Habilita logs para depuración
+        }
+    ]
+}
